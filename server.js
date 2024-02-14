@@ -13,5 +13,8 @@ const app = express();
 // Define a porta do servidor a partir de uma variável de ambiente, ou utiliza a porta 3000 como padrão
 const PORT = process.env.PORT || 3000;
 
+mongoose.connect(process.env.MONGO_URl).then(() => console.log(`Connected to Mongodb...`))
+.catch((err) => console.log(err))
+
 // Inicia o servidor Express para escutar conexões na porta especificada
 app.listen(PORT, () => console.log(`Connected in: ${PORT}`));
