@@ -4,6 +4,8 @@ const express = require('express');
 // Importa o módulo 'mongoose' para trabalhar com o MongoDB
 const mongoose = require('mongoose');
 
+const cors = require('cors');
+
 const routes = require("./routes/toDoRoute")
 
 // Importa o módulo 'dotenv' para carregar variáveis de ambiente a partir de um arquivo '.env'
@@ -14,6 +16,9 @@ const app = express();
 
 // Define a porta do servidor a partir de uma variável de ambiente, ou utiliza a porta 3000 como padrão
 const PORT = process.env.PORT || 3000;
+
+app.use(express.json())
+app.use(cors())
 
 // Conecta ao banco de dados MongoDB usando a URL fornecida no arquivo de variáveis de ambiente (.env)
 mongoose.connect(process.env.MONGO_URL)
